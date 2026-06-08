@@ -1,0 +1,391 @@
+/* MOUNTAIN NATURE THEME */
+
+.app {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(to bottom, rgba(0,0,0,0.08), rgba(0,0,0,0.15)),
+    url("https://images.pexels.com/photos/33289251/pexels-photo-33289251.png?_gl=1*1n14jj9*_ga*OTQ4MjIwNzk0LjE3Nzg5NDk3MDg.*_ga_8JE65Q40S6*czE3Nzk1NTAyNTgkbzUkZzEkdDE3Nzk1NTA2MjQkajMyJGwwJGgw");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  font-family: "Segoe UI", system-ui, sans-serif;
+}
+
+/* MAIN PANEL */
+
+.todo-container {
+  position: relative;
+  width: 100%;
+  max-width: 700px;
+  padding: 52px 56px;
+  border-radius: 36px;
+  background: rgba(8, 24, 12, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  box-shadow:
+    0 12px 50px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  animation: cardEntrance 0.9s ease;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.todo-container::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 36px;
+  background: linear-gradient(
+    135deg,
+    rgba(134, 239, 172, 0.06),
+    transparent 55%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* TITLE */
+
+.todo-title {
+  text-align: center;
+  color: #ffffff;
+  font-size: 3rem;
+  font-weight: 800;
+  letter-spacing: -1px;
+  margin-bottom: 40px;
+  text-shadow:
+    0 2px 12px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(134, 239, 172, 0.2);
+  position: relative;
+  z-index: 1;
+}
+
+/* HEADER row */
+
+.header {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  margin-bottom: 28px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* INPUTS */
+
+.header input,
+.todo-input-box input {
+  flex: 1;
+  padding: 15px 22px;
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.14);
+  color: #ffffff;
+  font-size: 0.95rem;
+  font-weight: 500;
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  transition: 0.3s ease;
+  letter-spacing: 0.2px;
+}
+
+.header input::placeholder,
+.todo-input-box input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 400;
+}
+
+.header input:focus,
+.todo-input-box input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(134, 239, 172, 0.6);
+  box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.14);
+}
+
+/* ADD BUTTON */
+
+.add-btn {
+  padding: 15px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  color: #052e0f;
+  font-size: 0.95rem;
+  font-weight: 800;
+  border: none;
+  background: linear-gradient(135deg, #6ee7a0, #22c55e);
+  box-shadow:
+    0 6px 20px rgba(34, 197, 94, 0.38),
+    0 2px 6px rgba(0,0,0,0.15);
+  transition: 0.3s ease;
+  white-space: nowrap;
+  letter-spacing: 0.3px;
+}
+
+.add-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px rgba(34, 197, 94, 0.5);
+  background: linear-gradient(135deg, #86efac, #4ade80);
+}
+
+/* FILTER BAR */
+
+.filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.filter-bar label {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  font-weight: 600;
+  white-space: nowrap;
+  text-shadow: 0 1px 4px rgba(0,0,0,0.4);
+}
+
+/* DROPDOWNS */
+
+.filter-bar select,
+.status-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 10px 38px 10px 18px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  background-color: rgba(5, 30, 12, 0.55);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%2386efac' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  color: #d1fae5;
+  font-size: 0.88rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+  letter-spacing: 0.2px;
+}
+
+.filter-bar select:focus,
+.status-select:focus {
+  outline: none;
+  border-color: rgba(134, 239, 172, 0.6);
+  box-shadow: 0 0 0 4px rgba(74, 222, 128, 0.14);
+}
+
+.filter-bar select option,
+.status-select option {
+  background: #071a0c;
+  color: #d1fae5;
+  padding: 8px;
+}
+
+/* TODO CARD */
+
+.todo-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 22px 26px;
+  margin-bottom: 16px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: 0.3s ease;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.todo-card:hover {
+  background: rgba(255, 255, 255, 0.09);
+  transform: translateY(-4px);
+  border-color: rgba(134, 239, 172, 0.2);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* CARD TEXT */
+
+.todo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+}
+
+.todo-text h3 {
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.2px;
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.45);
+}
+
+.todo-text p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.85rem;
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+/* STATUS BADGE */
+
+.todo-status {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  margin-top: 6px;
+  padding: 3px 10px;
+  border-radius: 50px;
+}
+
+.pending {
+  color: #854d0e;
+  background: rgba(253, 224, 71, 0.28);
+  border: 1px solid rgba(253, 224, 71, 0.4);
+}
+
+.completed {
+  color: #052e16;
+  background: rgba(134, 239, 172, 0.35);
+  border: 1px solid rgba(134, 239, 172, 0.5);
+}
+
+.not-completed {
+  color: #7f1d1d;
+  background: rgba(252, 165, 165, 0.28);
+  border: 1px solid rgba(252, 165, 165, 0.4);
+}
+
+/* CARD ACTIONS */
+
+.todo-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+/* EDIT and SAVE button */
+
+.update-btn {
+  padding: 10px 22px;
+  border-radius: 50px;
+  cursor: pointer;
+  color: #052e16;
+  font-size: 0.85rem;
+  font-weight: 800;
+  border: none;
+  background: linear-gradient(135deg, #6ee7a0, #22c55e);
+  box-shadow:
+    0 4px 14px rgba(52, 211, 153, 0.3),
+    0 2px 4px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+  letter-spacing: 0.2px;
+}
+
+.update-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(52, 211, 153, 0.45);
+}
+
+/* DELETE button */
+
+.delete-btn {
+  padding: 10px 22px;
+  border-radius: 50px;
+  cursor: pointer;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 800;
+  border: none;
+  background: linear-gradient(135deg, #f87171, #dc2626);
+  box-shadow:
+    0 4px 14px rgba(239, 68, 68, 0.28),
+    0 2px 4px rgba(0,0,0,0.1);
+  transition: 0.3s ease;
+  letter-spacing: 0.2px;
+}
+
+.delete-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 22px rgba(239, 68, 68, 0.42);
+}
+
+/* EDIT MODE INPUTS */
+
+.todo-edit-box {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.todo-edit-box label {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.todo-edit-box input {
+  padding: 10px 16px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  font-size: 0.9rem;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  transition: 0.3s ease;
+}
+
+.todo-edit-box input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(134, 239, 172, 0.55);
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.12);
+}
+
+/* EMPTY STATE */
+
+.empty-text {
+  text-align: center;
+  margin-top: 30px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  animation: pulse 2.5s ease-in-out infinite;
+}
+
+/* ANIMATIONS */
+
+@keyframes cardEntrance {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.35; }
+  50% { opacity: 0.8; }
+}

@@ -1,0 +1,86 @@
+/* ===== Apple/macOS + Nature Theme ===== */
+
+/* Apple Font Stack */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "SF Pro Display",
+    "SF Pro Text",
+    "Helvetica Neue",
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+/* ===== HTML ===== */
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* ===== BODY ===== */
+
+body {
+  overflow-x: hidden;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  text-rendering: optimizeLegibility;
+
+  background: #000;
+}
+
+/* ===== Scrollbar ===== */
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background:
+    linear-gradient(
+      to bottom,
+      #4ade80,
+      #15803d
+    );
+
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255,255,255,0.04);
+}
+
+/* ===== Selection ===== */
+
+::selection {
+  background: #4ade80;
+  color: white;
+}
+
+/* ===== Buttons ===== */
+
+button {
+  font-family: inherit;
+
+  border: none;
+
+  outline: none;
+}
+
+/* ===== Inputs ===== */
+
+input {
+  font-family: inherit;
+
+  border: none;
+
+  outline: none;
+}
