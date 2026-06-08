@@ -17,56 +17,70 @@ function TodoCard({ todo, deleteTodo, updateStatus, editTodo }) {
   };
 
   return (
-    <div className="todo-card">
+    <div className={`todo-card ${isEdit ? "todo-card-edit" : ""}`}>
 
       {isEdit ? (
-        <div className="todo-edit-box">
-          <label>Name:</label>
-          <input
-            type="text"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-          />
-          <label>Description:</label>
-          <input
-            type="text"
-            value={desc}
-            onChange={(e) => setDesc(e.target.value)}
-          />
-        </div>
+        <>
+          <div className="todo-edit-box">
+            <label>Name:</label>
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+            />
+            <label>Description:</label>
+            <input
+              type="text"
+              value={desc}
+              onChange={(e) => setDesc(e.target.value)}
+            />
+          </div>
+
+          <div className="todo-actions todo-actions-edit">
+            <select
+              className="status-select"
+              value={todo.status}
+              onChange={(e) =>
+                updateStatus({ todoId: todo.id, todoStatus: e.target.value })
+              }
+            >
+              <option value="Pending">Pending</option>
+              <option value="Completed">Completed</option>
+              <option value="Not Completed">Not Completed</option>
+            </select>
+
+            <button className="update-btn" onClick={handleSave}>Save</button>
+            <button className="delete-btn" onClick={() => deleteTodo(todo.id)}>Delete</button>
+          </div>
+        </>
       ) : (
-        <div className="todo-text">
-          <h3>{todo.name}</h3>
-          <p>{todo.desc}</p>
-          <p className={`todo-status ${getStatusClass()}`}>
-            {todo.status}
-          </p>
-        </div>
+        <>
+          <div className="todo-text">
+            <h3>{todo.name}</h3>
+            <p>{todo.desc}</p>
+            <p className={`todo-status ${getStatusClass()}`}>
+              {todo.status}
+            </p>
+          </div>
+
+          <div className="todo-actions">
+            <select
+              className="status-select"
+              value={todo.status}
+              onChange={(e) =>
+                updateStatus({ todoId: todo.id, todoStatus: e.target.value })
+              }
+            >
+              <option value="Pending">Pending</option>
+              <option value="Completed">Completed</option>
+              <option value="Not Completed">Not Completed</option>
+            </select>
+
+            <button className="update-btn" onClick={() => setIsEdit(true)}>Edit</button>
+            <button className="delete-btn" onClick={() => deleteTodo(todo.id)}>Delete</button>
+          </div>
+        </>
       )}
-
-      <div className="todo-actions">
-        <select
-          className="status-select"
-          value={todo.status}
-          onChange={(e) =>
-            updateStatus({ todoId: todo.id, todoStatus: e.target.value })
-          }
-        >
-          <option value="Pending">Pending</option>
-          <option value="Completed">Completed</option>
-          <option value="Not Completed">Not Completed</option>
-        </select>
-
-        {isEdit ? (
-          <button className="update-btn" onClick={handleSave}>Save</button>
-        ) : (
-          <button className="update-btn" onClick={() => setIsEdit(true)}>Edit</button>
-        )}
-
-        <button className="delete-btn" onClick={() => deleteTodo(todo.id)}>
-          Delete
-        </button>
-      </div>
 
     </div>
   );
